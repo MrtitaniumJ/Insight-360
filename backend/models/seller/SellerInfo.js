@@ -27,8 +27,8 @@ const sellerSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 6, // Minimum length of the password
-        maxlength: 10, // Maximum length of the password
+        // minlength: 6, // Minimum length of the password
+        // maxlength: 10, // Maximum length of the password
     },
     profileImage: {
         type: String,

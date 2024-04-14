@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 const userRouter=require('./routes/userRoutes');
+const sellerRouter = require('./routes/sellerRoutes');
+const masterRouter = require('./routes/masterRoutes');
 //const { validationError, globalErrorHandler } = require('./utils/errorHandlers');
 const cors = require('cors');
 require('dotenv').config();
@@ -29,6 +31,8 @@ app.use(bodyParser.json());
 //Routes 
 // app.use(routes);
 app.use(userRouter);
+app.use(sellerRouter);
+app.use(masterRouter);
 app.use(routes);
 
 //Error handling middleware
