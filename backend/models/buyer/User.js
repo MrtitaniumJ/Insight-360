@@ -53,6 +53,6 @@ const userInfoSchema = new mongoose.Schema({
 });
 
 // Create the model
-const MasterInfo = mongoose.model('MasterInfo', masterInfoSchema);
+const MasterInfo = mongoose.model('User', userInfoSchema);
 
 module.exports = MasterInfo;
