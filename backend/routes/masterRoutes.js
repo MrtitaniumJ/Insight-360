@@ -8,6 +8,9 @@ router.post('/registerMaster', masterController.registerMaster);
 router.post('/loginMaster', masterController.loginMaster);
 router.post('/logoutMaster', masterController.logoutMaster);
 
+// seller info
+router.get('/sellerData', masterController.getSellerDetails);
+
 // Protected routes for users
 router.get('/master', authenticateUser, masterController.getMasterDetails);
 router.put('/master', authenticateUser, masterController.updateMasterDetails);

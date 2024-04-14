@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const MasterInfo = require('../../models/master/MasterInfo');
+const SellerInfo = require('../../models/seller/SellerInfo');
+const SellerData = require('../../models/master/SellerData');
 
 // Controller function to handle user registration
 exports.registerMaster = async (req, res) => {
@@ -75,6 +77,41 @@ exports.getMasterDetails = async (req, res) => {
     } catch (error) {
         console.error('Error fetching master details:', error);
         res.status(500).json({ error: error.message || 'An error occurred while fetching master details' });
+    }
+};
+
+exports.getSellerDetails = async (req, res) => {
+    try {
+        // Fetch all seller information
+        const sellers = await SellerInfo.find();
+        console.log(sellers);
+
+        if (!sellers || sellers.length === 0) {
+            return res.status(400).json({ error: 'No sellers found' });
+        }
+
+        // Create an array to hold seller IDs
+        const sellerIds = sellers.map(seller => seller._id);
+        console.log(sellerIds);
+
+        // Find existing SellerData document
+        let sellerData = await SellerData.findOne();
+
+        // If SellerData document doesn't exist, create a new one
+        if (!sellerData) {
+            sellerData = new SellerData({ sellerIds });
+        } else {
+            // If SellerData document exists, update the sellerIds array
+            sellerData.sellerIds = sellerIds;
+        }
+
+        // Save the seller data instance
+        await sellerData.save();
+
+        res.status(200).json({ message: 'Seller data fetched successfully', data: sellers });
+    } catch (error) {
+        console.error('Error fetching seller details: ', error);
+        res.status(500).json({ error: error.message || "An error occurred while fetching seller details"});
     }
 };
 
