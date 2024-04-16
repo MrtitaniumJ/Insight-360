@@ -27,7 +27,7 @@ exports.registerMaster = async (req, res) => {
         // Create a new master instance
         const newMaster = new MasterInfo({ firstname, lastname, username, email, password: hashedPassword, profileImage});
         await newMaster.save();
-        res.status(201).json({ message: 'Admin  registered successfully' });
+        res.status(201).json({ message: 'Admin registered successfully' });
     } catch (error) {
         console.error('Error registering master: ', error);
         res.status(500).json({ error: error.message || 'An error occurred while registering master' });
