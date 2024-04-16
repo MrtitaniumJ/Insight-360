@@ -14,6 +14,12 @@ import SellerDashboardLayout from "./pages/SellerDashboardLayout";
 import Dashboard from "./components/seller/Dashboard";
 import Category from "./components/seller/Category";
 import ProductPage from "./pages/ProductPage";
+import Product from "./components/seller/Product";
+import Order from "./components/seller/Order";
+import Customer from "./components/seller/Customer";
+import Earning from "./components/seller/Earning";
+import WeeklyOverview from "./components/seller/WeeklyOverview";
+import MonthlyOverview from "./components/seller/MonthlyOverview";
 const App = () => {
   return (
     <Router>
@@ -32,8 +38,15 @@ const App = () => {
         </Route>
         <Route element={<SellerDashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/category" element={<Category />} />
+          <Route path="/categories" element={<Category />} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/orders" element={<Order />} />
+          <Route path="/customers" element={<Customer />} />
+          <Route path="/earning" element={<Earning />} />
+          <Route path="/weekly-overview" element={<WeeklyOverview />} />
+          <Route path="/monthly-overview" element={<MonthlyOverview />} />
         </Route>
+     
         <Route path="products" element={<ProductPage/>}/>
 
   
