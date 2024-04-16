@@ -119,8 +119,8 @@ exports.getSellerDetails = async (req, res) => {
 exports.updateMasterDetails = async (req, res) => {
     try {
         const masterId = req.masterId;
-        const { username, email } = req.body;
-        const updatedMaster = await MasterInfo.findByIdAndUpdate(masterId, { username, email }, { new: true });
+        const { username, email,password } = req.body;
+        const updatedMaster = await MasterInfo.findByIdAndUpdate(masterId, { username, email ,password}, { new: true });
         if (!updatedMaster) {
             return res.status(404).json({ error: 'Master not found' });
         }

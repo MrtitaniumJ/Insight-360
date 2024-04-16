@@ -4,7 +4,7 @@ const sellerSchema = new mongoose.Schema({
     sellerIds: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'SellerInfo', // seller ki id aayegi seller k db se 
-        required: true
+        // required: true
     }],
     // totalrevenue: {
     //     type: Number,

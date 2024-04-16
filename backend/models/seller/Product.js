@@ -7,17 +7,30 @@ const productSchema = new mongoose.Schema({
         ref: 'SellerInfo', // seller ki id aayegi seller k db se 
         required: true
     },
-    productName: {
-        type: String,
-        required: true
-    },
-    category: {
-        type: String,
-        required: true
-    },
-    brand: {
-        type: String
-    }
+    subcategories: [{
+            categoryName: {
+                type: String,
+                required: true
+            },
+            products: [{
+                productName: {
+                    type: String,
+                    required: true
+                },
+                category: [{
+                    type: String,
+                    required: true
+                }],
+                brand: [{
+                    type: String
+                }],
+                items: [{
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'item', // seller ki id aayegi seller k db se 
+                // required: true
+                }]
+            }]
+        }],
 });
 
 // Create the model

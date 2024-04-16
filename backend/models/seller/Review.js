@@ -11,7 +11,7 @@ const reviewSchema = new mongoose.Schema({
         ref: 'Product'
     },
     itemId: {
-        type: mongoose.Schema.Types.ObjectId,w
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
     },
     feedback: {
