@@ -32,7 +32,7 @@ const sellerSchema = new mongoose.Schema({
     },
     profileImage: {
         type: String,
-        required: true,
+        // required: true,
     },
     phoneNumber: {
         type: String,
@@ -65,7 +65,7 @@ const sellerSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product', // seller ki id aayegi seller k db se 
     }],
-    customers: [{
+    userIds: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // seller ki id aayegi seller k db se 
     }]

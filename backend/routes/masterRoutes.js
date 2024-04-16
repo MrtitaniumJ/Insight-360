@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const masterController = require('../controllers/master/masterController');
-const { authenticateUser } = require('../middleware/authentication');
+const { authenticateMaster } = require('../middleware/authentication');
 
 // User authentication routes
 router.post('/registerMaster', masterController.registerMaster);
@@ -12,8 +12,8 @@ router.post('/logoutMaster', masterController.logoutMaster);
 router.get('/sellerData', masterController.getSellerDetails);
 
 // Protected routes for users
-router.get('/master', authenticateUser, masterController.getMasterDetails);
-router.put('/master', authenticateUser, masterController.updateMasterDetails);
+router.get('/master', authenticateMaster, masterController.getMasterDetails);
+router.put('/master', authenticateMaster, masterController.updateMasterDetails);
 // router.delete('/master', authenticateUser, masterController.deleteMasterAccount);
 
 module.exports = router;
