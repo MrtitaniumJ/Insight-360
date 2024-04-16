@@ -9,7 +9,7 @@ router.post('/loginMaster', masterController.loginMaster);
 router.post('/logoutMaster', masterController.logoutMaster);
 
 // seller info
-router.get('/sellerData', masterController.getSellerDetails);
+//router.get('/sellerData', masterController.getSellerDetails);
 
 // Protected routes for users
 router.get('/master', authenticateUser, masterController.getMasterDetails);

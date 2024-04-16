@@ -71,7 +71,6 @@ const userInfoSchema = new mongoose.Schema({
     //     },
     //     required: true
     // }]
-
 });
 
 // Create the model
