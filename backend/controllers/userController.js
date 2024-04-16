@@ -120,4 +120,6 @@ exports.logoutUser = async (req, res) => {
     }
 };
 
+
+
 // Other controller functions for user-related operations
