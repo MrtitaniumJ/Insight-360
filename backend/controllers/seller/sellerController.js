@@ -120,4 +120,15 @@ exports.logoutSeller = async (req, res) => {
     }
 };
 
+// get all customers of a seller
+exports.getAllCustomers = async (req, res) => {
+    try {
+        const customers = await User.find({});
+        res.status(200).json(customers);
+    } catch (error) {
+        console.error('Error fetching customers:', error);
+        res.status(500).json({ error: error.message || 'An error occurred while fetching customers' });
+    }
+};
+
 // Other controller functions for seller-related operations

@@ -13,4 +13,7 @@ router.get('/seller', authenticateUser, sellerController.getSellerDetails);
 router.put('/seller', authenticateUser, sellerController.updateSellerDetails);
 router.delete('/seller', authenticateUser, sellerController.deleteSellerAccount);
 
+// route to get all customers
+router.get('/customers', authenticateUser, sellerController.getAllCustomers);
+
 module.exports = router;
