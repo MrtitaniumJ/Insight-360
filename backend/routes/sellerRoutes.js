@@ -14,7 +14,7 @@ router.put('/seller', authenticateSeller, sellerController.updateSellerDetails);
 router.delete('/seller', authenticateSeller, sellerController.deleteSellerAccount);
 
 // route to get all customers
-router.get('/customers', authenticateUser, sellerController.getAllCustomers);
+router.get('/customers', authenticateSeller, sellerController.getAllCustomers);
 //get deatils of aa the user 
 router.get('/userData', sellerController.getUserDetails );
 // adding a new product
