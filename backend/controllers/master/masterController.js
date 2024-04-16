@@ -84,7 +84,6 @@ exports.getSellerDetails = async (req, res) => {
     try {
         // Fetch all seller information
         const sellers = await SellerInfo.find();
-        console.log(sellers);
 
         if (!sellers || sellers.length === 0) {
             return res.status(400).json({ error: 'No sellers found' });
@@ -92,7 +91,6 @@ exports.getSellerDetails = async (req, res) => {
 
         // Create an array to hold seller IDs
         const sellerIds = sellers.map(seller => seller._id);
-        console.log(sellerIds);
 
         // Find existing SellerData document
         let sellerData = await SellerData.findOne();

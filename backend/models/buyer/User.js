@@ -50,6 +50,7 @@ const userInfoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    
 });
 
 // Create the model
