@@ -64,7 +64,7 @@ const sellerSchema = new mongoose.Schema({
     govIdCard: {
         type: String
     },
-    products: [{
+    productIds: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product', // seller ki id aayegi seller k db se 
     }],
