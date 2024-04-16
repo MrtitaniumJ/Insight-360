@@ -32,7 +32,7 @@ const sellerSchema = new mongoose.Schema({
     },
     profileImage: {
         type: String,
-        required:true,
+        required: true,
     },
     phoneNumber: {
         type: String,
@@ -60,7 +60,101 @@ const sellerSchema = new mongoose.Schema({
     },
     govIdCard: {
         type: String
-    }
+    },
+    products: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product', // seller ki id aayegi seller k db se 
+    }],
+    customers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // seller ki id aayegi seller k db se 
+    }]
+    // }],
+    // subcategories: [{
+    //     categoryName: {
+    //         type: String,
+    //         required: true
+    //     },
+    //     products: [{
+    //         productName: {
+    //             type: String,
+    //             required: true
+    //         },
+    //         category: [{
+    //             type: String,
+    //             required: true
+    //         }],
+    //         brand: [{
+    //             type: String
+    //         }],
+    //         items: [{
+    //             itemName: {
+    //                 type: String,
+    //                 required: true
+    //             },
+    //             itemDetails: {
+    //                 type: String
+    //             },
+    //             totalQuantity: {
+    //                 type: Number,
+    //                 required: true
+    //             },
+    //             images: {
+    //                 type: [String]
+    //             },
+    //             company: {
+    //                 type: String
+    //             },
+    //             price: {
+    //                 type: Number,
+    //                 required: true
+    //             },
+    //             itemDescription: {
+    //                 color: {
+    //                     type: String
+    //                 },
+    //                 size: {
+    //                     type: String
+    //                 },
+    //                 warranty: {
+    //                     type: Boolean
+    //                 },
+    //                 available: {
+    //                     type: Boolean
+    //                 }
+    //             },
+    //             // Reviews for items
+    //             reviews: [{
+    //                 feedback: {
+    //                     type: String,
+    //                     required: true
+    //                 },
+    //                 image: {
+    //                     type: [String],
+    //                 },
+    //                 isLike: {
+    //                     type: Boolean,
+    //                     required: true
+    //                 },
+    //                 dislikeReason: {
+    //                     type: String
+    //                 },
+    //                 rating: {
+    //                     type: Number,
+    //                     required: true,
+    //                     min: 1,
+    //                     max: 5
+    //                 },
+    //                 timestamp: {
+    //                     type: Date,
+    //                     default: Date.now
+    //                 }
+    //             }]
+    //         }]
+    //     }]
+    // }]
+
+
 });
 
 // Create the model

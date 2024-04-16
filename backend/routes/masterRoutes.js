@@ -14,6 +14,6 @@ router.post('/logoutMaster', masterController.logoutMaster);
 // Protected routes for users
 router.get('/master', authenticateUser, masterController.getMasterDetails);
 router.put('/master', authenticateUser, masterController.updateMasterDetails);
-router.delete('/master', authenticateUser, masterController.deleteMasterAccount);
+// router.delete('/master', authenticateUser, masterController.deleteMasterAccount);
 
 module.exports = router;
