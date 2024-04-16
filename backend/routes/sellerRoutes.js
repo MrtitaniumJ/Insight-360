@@ -16,8 +16,9 @@ router.delete('/seller', authenticateSeller, sellerController.deleteSellerAccoun
 // route to get all customers
 router.get('/customers', authenticateSeller, sellerController.getAllCustomers);
 //get deatils of aa the user 
-router.get('/userData', sellerController.getUserDetails );
+router.get('/userData',  authenticateSeller,sellerController.getUserDetails );
 // adding a new product
 router.post('/addProduct',authenticateSeller,sellerController.addProduct);
+//adding all products ids into seller info
 router.get('/productData', authenticateSeller,sellerController.getProductDetails);
 module.exports = router;
