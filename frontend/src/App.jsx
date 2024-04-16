@@ -11,8 +11,9 @@ import SignupSeller from "./components/authentication/SignupSeller";
 import SignupMaster from "./components/authentication/SignupMaster";
 import './index.css'
 import SellerDashboardLayout from "./pages/SellerDashboardLayout";
-import Dashboard from "./components/authentication/seller/Dashboard";
-import Category from "./components/authentication/seller/Category";
+import Dashboard from "./components/seller/Dashboard";
+import Category from "./components/seller/Category";
+import ProductPage from "./pages/ProductPage";
 const App = () => {
   return (
     <Router>
@@ -33,6 +34,9 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/category" element={<Category />} />
         </Route>
+        <Route path="products" element={<ProductPage/>}/>
+
+  
         
       </Routes>
     </Router>

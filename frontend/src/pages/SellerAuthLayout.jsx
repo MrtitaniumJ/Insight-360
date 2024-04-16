@@ -1,11 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router";
+import HeaderSeller from "../components/header/HeaderSeller";
 
 function SellerAuthLayout() {
   return (
     <><div  className="h-[10vh]">
 
-     header aaiga
+     <HeaderSeller/>
     </div>
       <Outlet />
     </>

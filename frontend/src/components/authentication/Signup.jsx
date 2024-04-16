@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +14,8 @@ const Signup = () => {
     location: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,6 +35,7 @@ const Signup = () => {
         },
         body: JSON.stringify(formData)
       });
+      navigate('/login');
       // Handle response from server, e.g., redirect user or show a message
     } catch (error) {
       console.error('Error submitting sign-up form:', error);
@@ -40,7 +43,7 @@ const Signup = () => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gray-50 dark:bg-gray-900 pt-12">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           SignUp Form
