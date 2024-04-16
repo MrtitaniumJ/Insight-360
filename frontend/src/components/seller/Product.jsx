@@ -21,6 +21,11 @@ const Customer = () => {
           Authorization: `Bearer ${token}`
         }
       });
+
+      if (!Array.isArray(response.data)) {
+        throw new Error('Invalid response format - products array expected');
+      }
+      
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
