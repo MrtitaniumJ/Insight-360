@@ -19,5 +19,5 @@ router.get('/customers', authenticateSeller, sellerController.getAllCustomers);
 router.get('/userData', sellerController.getUserDetails );
 // adding a new product
 router.post('/addProduct',authenticateSeller,sellerController.addProduct);
-router.get('/productData', authenticateSeller,sellerController.getProductDetails);
+router.get('/productData', authenticateSeller,sellerController.getAllProducts);
 module.exports = router;
