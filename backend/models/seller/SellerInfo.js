@@ -32,7 +32,6 @@ const sellerSchema = new mongoose.Schema({
     },
     profileImage: {
         type: String,
-        required: true,
     },
     phoneNumber: {
         type: String,

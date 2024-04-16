@@ -9,7 +9,7 @@ exports.registerSeller = async (req, res) => {
         // console.log(username,email,password,confirmPassword);
 
         // Check if the required fields are provided
-        if (!firstname || !lastname || !username || !email || !password || !phoneNumber || !address || !city || !pincode || !state || !shopName || !gstinNumber || !govIdCard) {
+        if (!firstname || !lastname || !username || !email || !password || !phoneNumber || !address || !city || !pincode || !state || !shopName || !gstinNumber) {
             return res.status(400).json({ error: 'Please provide all the information' });
         }
 
