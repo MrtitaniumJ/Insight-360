@@ -13,4 +13,6 @@ router.get('/user', authenticateUser, userController.getUserDetails);
 router.put('/user', authenticateUser, userController.updateUserDetails);
 router.delete('/user', authenticateUser, userController.deleteUserAccount);
 
+router.get('/addid', userController.adding);
+
 module.exports = router;
