@@ -124,6 +124,54 @@ exports.logoutSeller = async (req, res) => {
     }
 };
 
+// get all customers of a seller
+exports.getAllCustomers = async (req, res) => {
+    try {
+        const customers = await User.find({});
+        res.status(200).json(customers);
+    } catch (error) {
+        console.error('Error fetching customers:', error);
+        res.status(500).json({ error: error.message || 'An error occurred while fetching customers' });
+    }
+};
+
+// Other controller functions for seller-related operations
+
+// // get user details
+exports.getUserDetails = async (req, res) => {
+    try {
+        // Fetch all seller information
+        const users = await User.find();
+        // console.log(users);
+
+        if (!users || users.length === 0) {
+            return res.status(400).json({ error: 'No User found' });
+        }
+
+        // Create an array to hold seller IDs
+        const userIds = users.map(user => user._id);
+        console.log(userIds);
+
+        // Find existing SellerData document
+        let userData = await SellerInfo.findOne();
+
+        // If SellerData document doesn't exist, create a new one
+        if (!userData) {
+            userData = new SellerInfo({ userIds });
+        } else {
+            // If SellerData document exists, update the sellerIds array
+            userData.userIds = userIds;
+        }
+
+        // Save the seller data instance
+        await userData.save();
+
+        res.status(200).json({ message: 'user data fetched successfully', data: users });
+    } catch (error) {
+        console.error('Error fetching seller details: ', error);
+        res.status(500).json({ error: error.message || "An error occurred while fetching user details"});
+    }
+};
 
 // Controller function to add a new product
 exports.addProduct = async (req, res) => {
