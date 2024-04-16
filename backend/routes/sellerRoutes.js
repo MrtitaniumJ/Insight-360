@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sellerController = require('../controllers/seller/sellerController');
-const { authenticateSeller } = require('../middleware/authentication');
+const { authenticateSeller, authenticateUser } = require('../middleware/authentication');
 
 // User authentication routes
 router.post('/registerSeller', sellerController.registerSeller);
@@ -15,6 +15,7 @@ router.delete('/seller', authenticateSeller, sellerController.deleteSellerAccoun
 
 // route to get all customers
 router.get('/customers', authenticateSeller, sellerController.getAllCustomers);
+router.get('/products', authenticateSeller, sellerController.getAllProducts);
 //get deatils of aa the user 
 router.get('/userData',  authenticateSeller,sellerController.getUserDetails );
 // adding a new product

@@ -16,7 +16,7 @@ const Customer = () => {
       const token = localStorage.getItem('token'); // Use the correct key to retrieve the token
       if (!token) throw new Error('No token provided!');
   
-      const response = await axios.get(`${API_URL}/productData`, {
+      const response = await axios.get(`${API_URL}/products`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -25,7 +25,7 @@ const Customer = () => {
       if (!Array.isArray(response.data)) {
         throw new Error('Invalid response format - products array expected');
       }
-      
+
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -71,7 +71,17 @@ const Customer = () => {
                     <td className="px-4 py-2">{Product.images}</td>
                     <td className="px-4 py-2">{Product.company}</td>
                     <td className="px-4 py-2">{Product.price}</td>
-                    <td className="px-4 py-2">{Product.itemDescription}</td>
+                    {/* Render itemDescription properties */}
+                    <td className='px-4 py-2'>
+                      {Product.itemDescription && (
+                        <div>
+                          <p>Color: {Product.itemDescription.color}</p>
+                          <p>Size: {Product.itemDescription.size}</p>
+                          <p>Warranty: {Product.itemDescription.warranty ? 'Yes' : 'No'}</p>
+                          <p>Available: {Product.itemDescription.available ? 'Yes' : 'No'}</p>
+                        </div>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
