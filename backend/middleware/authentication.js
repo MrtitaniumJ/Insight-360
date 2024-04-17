@@ -16,7 +16,7 @@ exports.authenticateUser = async (req, res, next) => {
         const user = await User.findById(decoded.userId);
 
         if (!user) {
-            return res.status(401).json({ error: 'Unauthorized - Invalid token' });
+            return res.status(401).json({ error: 'Unauthorized Master - Invalid token' });
         }
 
         req.userId = decoded.userId;
@@ -24,8 +24,8 @@ exports.authenticateUser = async (req, res, next) => {
     } catch (error) {
         console.error('Error authenticating user: ', error);
         if (error instanceof jwt.JsonWebTokenError) {
-            return res.status(401).json({ error: 'Unauthorized - Invalid token' });
+            return res.status(401).json({ error: error.message || 'Unauthorized - Invalid token' });
         }
-        return res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: error.message || 'Internal server error' });
     }
 };

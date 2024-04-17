@@ -50,6 +50,27 @@ const userInfoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    productId: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+    }],
+    // searchId: [{
+    //     type: {
+    //         productId: {
+    //             type: mongoose.Schema.Types.ObjectId,
+    //             ref: 'Product',
+    //             itemId: {
+    //                 type: mongoose.Schema.Types.ObjectId,
+    //                 ref: 'Item',
+    //                 reviewId: {
+    //                     type: mongoose.Schema.Types.ObjectId,
+    //                     ref: 'Review'
+    //                 }
+    //             },
+    //         },
+    //     },
+    //     required: true
+    // }]
 });
 
 // Create the model
