@@ -1,4 +1,5 @@
 const User = require('../models/buyer/User');
+const Product=require('../models/seller/Product');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -117,6 +118,41 @@ exports.logoutUser = async (req, res) => {
     } catch (error) {
         console.error('Error logging out user: ', error);
         res.status(500).json({ error: 'An error occurred while logging out user' });
+    }
+};
+
+//adding product id into user schema
+
+exports.adding= async (req, res) => {
+    try {
+        // Fetch all seller information
+        const products= await Product.find();
+
+        if (!products || products.length === 0) {
+            return res.status(400).json({ error: 'No products found' });
+        }
+
+        // Create an array to hold seller IDs
+        const productId = products.map(product => product._id);
+
+        // Find existing SellerData document
+        let productData = await User.findOne();
+
+        // If SellerData document doesn't exist, create a new one
+        if (!productData) {
+            productData= new User({ productId});
+        } else {
+            // If SellerData document exists, update the sellerIds array
+            productData.productId = productId;
+        }
+
+        // Save the seller data instance
+        await User.save();
+
+        res.status(200).json({ message: 'Seller data fetched successfully', data: products });
+    } catch (error) {
+        console.error('Error fetching seller details: ', error);
+        res.status(500).json({ error: error.message || "An error occurred while fetching seller details"});
     }
 };
 

@@ -16,19 +16,21 @@ const OrderTable = ({ orders }) => {
               <th className="px-4 py-2">Price</th>
             </tr>
           </thead>
-          <tbody >
-            {orders.map((order, i) => (
+          <tbody>
+            {orders.map((order) => (
               <tr key={order.id} className="bg-gray-50 hover:bg-gray-100">
                 <td className=" px-4 py-2">{order.id}</td>
                 <td className="flex  px-4 py-2">
                   {order.products.length > 2 ? (
                     <>
                       <img
+                        key={order.products[0].id}
                         src={order.products[0].image}
                         alt={order.products[0].title}
                         className="w-8 h-8 rounded-full"
                       />
                       <img
+                        key={order.products[1].id}
                         src={order.products[1].image}
                         alt={order.products[1].title}
                         className="w-8 h-8 rounded-full"
@@ -48,7 +50,7 @@ const OrderTable = ({ orders }) => {
                 </td>
                 <td className=" px-4 py-2">
                   {order.products.map((product, index) => (
-                    <span className="" key={index}>
+                    <span className="" key={product.id}>
                       {product.title}
                       {index !== order.products.length - 1 && ", "}
                     </span>
