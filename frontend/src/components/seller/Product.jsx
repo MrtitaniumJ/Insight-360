@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001';
 
-const Customer = () => {
+const Product = () => {
   const [error, setError] = useState();
   const [products, setProducts] = useState([]);
 
@@ -93,4 +93,4 @@ const Customer = () => {
   );
 };
 
-export default Customer;
+export default Product;
