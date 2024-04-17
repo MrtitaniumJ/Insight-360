@@ -50,14 +50,14 @@ exports.authenticateSeller = async (req, res, next) => {
         const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
 
         if (!token) {
-            return res.status(401).json({ error: 'Unauthorized - No token provided' });
+            return res.status(401).json({ error: 'Unauthorized Seller - No token provided' });
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         const seller = await SellerInfo.findById(decoded.sellerId);
 
         if (!seller) {
-            return res.status(401).json({ error: 'Unauthorized - Invalid token' });
+            return res.status(401).json({ error: 'Unauthorized seller - Invalid token' });
         }
 
         req.sellerId= decoded.sellerId;
