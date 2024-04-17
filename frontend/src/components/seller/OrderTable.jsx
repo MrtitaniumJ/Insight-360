@@ -1,5 +1,6 @@
 import React from "react";
-
+// ye dashboard wali table h
+// main order wali order table order ki hi file me h
 const OrderTable = ({ orders }) => {
   return (
     <div className="overflow-x-auto">
@@ -18,8 +19,8 @@ const OrderTable = ({ orders }) => {
           <tbody >
             {orders.map((order, i) => (
               <tr key={order.id} className="bg-gray-50 hover:bg-gray-100">
-                <td className="ProductPage px-4 py-2">{order.id}</td>
-                <td className="flex ProductPage px-4 py-2">
+                <td className=" px-4 py-2">{order.id}</td>
+                <td className="flex  px-4 py-2">
                   {order.products.length > 2 ? (
                     <>
                       <img
@@ -45,7 +46,7 @@ const OrderTable = ({ orders }) => {
                     ))
                   )}
                 </td>
-                <td className="ProductPage px-4 py-2">
+                <td className=" px-4 py-2">
                   {order.products.map((product, index) => (
                     <span className="" key={index}>
                       {product.title}
@@ -53,7 +54,7 @@ const OrderTable = ({ orders }) => {
                     </span>
                   ))}
                 </td>
-                <td className="ProductPage px-4 py-2">{order.price}</td>
+                <td className=" px-4 py-2">{order.price}</td>
               </tr>
             ))}
           </tbody>
