@@ -182,6 +182,35 @@ const Dashboard = () => {
       price: 90,
     },
   ];
+
+  const getTotalSales = () => {
+    return orders.reduce((total, order) => total + order.price, 0);
+  };
+
+  const getProductStatistics = () => {
+    const productStats = {};
+
+    orders.forEach(order => {
+      order.products.forEach(product => {
+        if (productStats[product.title]) {
+          productStats[product.title].quantity += 1;
+          productStats[product.title].revenue += product.price;
+        } else {
+          productStats[product.title] = {
+            quantity: 1,
+            revenue: product.price
+          };
+        }
+      });
+    });
+
+    return productStats;
+  };
+
+  const totalSales = getTotalSales();
+
+  const productStatistics = getProductStatistics();
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex h-[40vh]">
@@ -197,6 +226,11 @@ const Dashboard = () => {
         <div className="w-1/3">
           {/* <GeoChart /> */}
           <BarChart/>
+
+
+
+        <div className="w-1/3">
+          <GeoChart productStatistics= {productStatistics} />
         </div>
 
         {/* <div className="w-1/3">
