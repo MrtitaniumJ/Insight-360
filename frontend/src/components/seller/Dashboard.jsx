@@ -1,7 +1,8 @@
 import React from "react";
 import OrderTable from "./OrderTable";
 import D3Chart from './D3Chart';
-import GeoChart from './GeoChart';
+// import GeoChart from './GeoChart';
+import BarChart from "./BarChart"
 //import Heatmap from './LineChart';
 
 const Dashboard = () => {
@@ -218,8 +219,15 @@ const Dashboard = () => {
         <div>map3</div> */}
 
         <div className="w-1/3">
-          <D3Chart totalSales={totalSales} />
+          <D3Chart />
+          {/* <img src="https://tse1.mm.bing.net/th?id=OIP.Bf02R88SWu1h43Uwja6rcAHaDu&pid=Api&P=0&h=180" alt="" /> */}
         </div>
+
+        <div className="w-1/3">
+          {/* <GeoChart /> */}
+          <BarChart/>
+
+
 
         <div className="w-1/3">
           <GeoChart productStatistics= {productStatistics} />
